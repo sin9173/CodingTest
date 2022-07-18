@@ -8,13 +8,13 @@ public class DalPangiUp2 {
     public static long slide = 0;
     public static long height = 0;
 
+    public static long total_height = 0;
+
     public static long result = 0;
 
     public static long average = 0;
 
     public static String[] nums = {};
-
-    public static long ca = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -22,28 +22,16 @@ public class DalPangiUp2 {
         nums = bf.readLine().replaceAll(" ", "~").split("~");
         speed = Integer.parseInt(nums[0]);
         slide = Integer.parseInt(nums[1]);
-        height = Integer.parseInt(nums[2]);
+        total_height = Integer.parseInt(nums[2]);
+        height = total_height - speed;
 
-        if(height<=speed) {
+        if(total_height<=speed) {
             System.out.println(1);
         } else {
             average = speed - slide;
-            //System.out.println("average : " + average);
-            //System.out.println("1 : " + speed/average);
-
             result = height/average;
             result = (result * average)<height?result+1:result;
-
-            System.out.println("result 계산전 : " + result);
-
-            ca = (average * (result - 1)) + slide;
-
-            result = ca + slide >= height?result-(speed/average - (speed%average>0&&height%average>0?0:1)):result;
-
-            //System.out.println("2 : " + (result * average));
-            //System.out.println("3 : " + (average * (result - 1)));
-
-            bw.write(String.valueOf(result));
+            bw.write(String.valueOf(result+1));
             bw.flush();
             bw.close();
         }
