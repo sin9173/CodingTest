@@ -22,7 +22,7 @@ public class CoordinateSort {
     public static void init() throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         count = Integer.parseInt(bf.readLine());
-        input = new Integer[5][2];
+        input = new Integer[count][2];
         for(int i=0 ; i<input.length ; i++) {
             input[i] = Stream.of(bf.readLine().replaceAll(" ", "~").split("~"))
                     .map(s -> Integer.parseInt(s))
@@ -61,7 +61,11 @@ public class CoordinateSort {
         int right = 0;
 
         while(right<array.length) {
-            while(array[left][0]==array[right+1][0] && right<array.length-1) right++;
+            System.out.println("left : " + left);
+            System.out.println("right : " + right);
+            System.out.println("length : " + array.length);
+            while(right<array.length-1 && array[left][0]==array[right+1][0]) right++;
+            System.out.println("Right : " + right);
             if(right>left) {
                 array = quickSort(array, left, right, 1);
                 left = right;
@@ -73,15 +77,16 @@ public class CoordinateSort {
     }
 
     public static void printArray(Integer[][] array) {
-        System.out.println("{");
+//        System.out.println("{");
         for(int i=0 ; i<array.length ; i++) {
-            System.out.print("[");
+//            System.out.print("[");
             for(int j=0 ; j<array[i].length ; j++) {
                 System.out.print(array[i][j] + ", ");
             }
-            System.out.println("]");
+            System.out.println();
+//            System.out.println("]");
         }
-        System.out.println("}");
+//        System.out.println("}");
     }
 
 
