@@ -11,5 +11,10 @@ public class Test {
         double bd = Double.parseDouble(b.replaceAll("\\.", ""));
 
         System.out.println("a : " + ad + ", b : " + bd);
+
+        Integer i1 = 1;
+        Integer i2 = 5;
+
+        System.out.println(i1.compareTo(i2));
     }
 }
